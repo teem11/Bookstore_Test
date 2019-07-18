@@ -1,7 +1,6 @@
 package Ajouuniv;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BookStore {
     ArrayList<Book> bookList = new ArrayList<>();
@@ -30,6 +29,24 @@ public class BookStore {
             if(bookList.get(i).getBooknum() == number)
             {
                 bookList.remove(i);
+            }
+        }
+    }
+    void loanBook(String title){
+        for(int i = 0;i<bookList.size();i++)
+        {
+            if(bookList.get(i).getTitle().equals(title))
+            {
+                bookList.get(i).setLoaned(true);
+            }
+        }
+    }
+    void returnBook(String title){
+        for(int i = 0;i<bookList.size();i++)
+        {
+            if(bookList.get(i).getTitle().equals(title))
+            {
+                bookList.get(i).setLoaned(false);
             }
         }
     }
