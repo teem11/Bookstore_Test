@@ -1,15 +1,14 @@
 package Ajouuniv;
 
 import org.junit.Test;
-import sun.invoke.empty.Empty;
 
-import static com.sun.jmx.snmp.ThreadContext.contains;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class BookStoreTest {
     BookStore bookTest = new BookStore();
+
     @Test
     public void emptyTest_맨처음객체의_list가_비어있는상태인지테스트(){
         BookStore emptyList = new BookStore();
@@ -44,7 +43,7 @@ public class BookStoreTest {
     public void delByTitleTest_제목으로삭제가잘되는지테스트(){
         bookTest.addBook("너의췌장을먹고싶어","스미노 요루","소설",1);
         assertThat(bookTest.bookList.isEmpty(), is(false));
-        bookTest.delBookBytitle("너의췌장을먹고싶어");
+        bookTest.delBookByTitle("너의췌장을먹고싶어");
         assertThat(bookTest.bookList.isEmpty(), is(true));
     }
     @Test

@@ -14,7 +14,7 @@ public class BookStore {
         book.setLoaned(false);
         bookList.add(book);
     }
-    void delBookBytitle(String title){
+    void delBookByTitle(String title){
         for(int i = 0;i<bookList.size();i++)
         {
             if(bookList.get(i).getTitle().equals(title))
