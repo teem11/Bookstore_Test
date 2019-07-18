@@ -33,7 +33,7 @@ public class BookStoreTest {
     @Test
     public void authorTest_올바른작가가들어갔는지테스트(){
         bookTest.addBook("너의췌장을먹고싶어","스미노 요루","소설",1);
-        assertThat(bookTest.bookList.get(0).getAuthor(),is("스미노요루"));
+        assertThat(bookTest.bookList.get(0).getAuthor(),is("스미노 요루"));
     }
     @Test
     public void subjectTest_올바른분야가들어갔는지테스트(){
@@ -65,5 +65,18 @@ public class BookStoreTest {
     public void containTest_등록한책의제목에포함되는지테스트(){
         bookTest.addBook("너의췌장을먹고싶어","스미노 요루","소설",1);
         assertThat(bookTest.bookList.get(0).getTitle(),containsString("췌장"));
+    }
+    @Test
+    public void loanTest_책이정상적으로빌려지는지테스트(){
+        bookTest.addBook("너의췌장을먹고싶어","스미노 요루","소설",1);
+        bookTest.loanBook("너의췌장을먹고싶어");
+        assertThat(bookTest.bookList.get(0).loaned,is(true));
+    }
+    @Test
+    public void returnTest_책이정상적으로반납되는지테스트(){
+        bookTest.addBook("너의췌장을먹고싶어","스미노 요루","소설",1);
+        bookTest.loanBook("너의췌장을먹고싶어");
+        bookTest.returnBook("너의췌장을먹고싶어");
+        assertThat(bookTest.bookList.get(0).loaned,is(false));
     }
 }
